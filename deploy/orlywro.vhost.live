@@ -47,14 +47,8 @@ server {
         proxy_set_header Host $host;
         access_log off;
     }
-    location = /druh {
-        return 301 /druh/;
-    }
-    location ^~ /druh/ {
-        root /home/ubuntu/orlywro-game;
-        try_files $uri $uri/ =404;
-        index index.html;
-    }
+    location = /druh { return 301 /game/; }
+    location ^~ /druh/ { return 301 /game/; }
 
     listen [::]:443 ssl ipv6only=on; # managed by Certbot
     listen 443 ssl; # managed by Certbot
