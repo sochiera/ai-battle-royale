@@ -1,0 +1,30 @@
+[Unit]
+Description=Orly-Wro: Bitwa - autorytatywny serwer gry (WebSocket)
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/orlywro-game/game-server
+Environment=NODE_ENV=production
+Environment=HOST=127.0.0.1
+Environment=PORT=8502
+Environment=STATIC_DIR=/home/ubuntu/orlywro-game/game
+Environment=DATA_DIR=/home/ubuntu/orlywro-game-data
+Environment=MATCH_DURATION=300
+Environment=HOST_RATE_MAX=6
+Environment=JOIN_RATE_MAX=20
+Environment=REJOIN_RATE_MAX=40
+Environment=WS_MAX_PER_IP=10
+ExecStart=/usr/bin/node /home/ubuntu/orlywro-game/game-server/src/index.js
+Restart=always
+RestartSec=2
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=orlywro-game
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

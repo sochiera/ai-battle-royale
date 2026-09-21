@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://pingwiny.edu.pl/index.html</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://pingwiny.edu.pl/o-pingwinach.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pingwiny.edu.pl/gatunki.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://pingwiny.edu.pl/siedliska.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pingwiny.edu.pl/zycie.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pingwiny.edu.pl/ochrona.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pingwiny.edu.pl/galeria.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pingwiny.edu.pl/materialy.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pingwiny.edu.pl/kontakt.html</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+</urlset>

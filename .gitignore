@@ -1,0 +1,8 @@
+node_modules/
+game-server/data/
+game-server/*-data/
+*.pem
+*.key
+pbn_vps*
+.env
+.DS_Store

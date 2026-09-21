@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saper — Zbiórka Franka Gry</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/games.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../../index.html">
+      <span class="brand__logo" data-pixel-icon="mine" data-pixel-size="16"></span>
+      <span>Saper <em>Gry</em></span>
+    </a>
+    <nav class="site-nav">
+      <a class="btn btn--ghost" href="../../index.html">← Menu</a>
+    </nav>
+  </header>
+
+  <main class="game-shell">
+    <div class="game-topbar">
+      <h1>Saper</h1>
+      <div class="hud" id="hud"></div>
+    </div>
+
+    <div class="game-stage game-stage--board" id="stage"></div>
+
+    <div class="status-line" id="status">Kliknij pole, aby odsłonić. Prawy przycisk lub przytrzymanie — flaga.</div>
+
+    <div class="game-toolbar">
+      <div class="filters" id="level">
+        <button class="filter-btn is-active" data-level="beginner" type="button">Początkujący</button>
+        <button class="filter-btn" data-level="intermediate" type="button">Średni</button>
+        <button class="filter-btn" data-level="expert" type="button">Ekspert</button>
+      </div>
+    </div>
+    <div class="game-toolbar">
+      <button class="btn" id="btn-new" type="button">Nowa gra</button>
+      <a class="btn btn--ghost" href="../../index.html">Menu gier</a>
+    </div>
+  </main>
+
+  <script src="../../js/core/game.js"></script>
+  <script src="../../js/core/storage.js"></script>
+  <script src="../../js/core/icons.js"></script>
+  <script src="../../js/games/minesweeper.js"></script>
+  <script>
+    (function () {
+      var game = new ZFG.games.Minesweeper(document.getElementById('stage'), {
+        hud: document.getElementById('hud'),
+        status: document.getElementById('status')
+      });
+      game.init();
+      game.start();
+
+      var levels = document.getElementById('level');
+      levels.addEventListener('click', function (event) {
+        var button = event.target.closest('.filter-btn');
+        if (!button) return;
+        Array.prototype.forEach.call(levels.querySelectorAll('.filter-btn'), function (item) {
+          item.classList.toggle('is-active', item === button);
+        });
+        game.setLevel(button.getAttribute('data-level'));
+      });
+
+      document.getElementById('btn-new').addEventListener('click', function () {
+        game.newGame();
+      });
+    })();
+  </script>
+</body>
+</html>

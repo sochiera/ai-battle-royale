@@ -1,0 +1,17 @@
+{
+  "name": "orlywro-game-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Autorytatywny serwer WebSocket gry Orly-Wro: Bitwa",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "bots": "node bots/simulate.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

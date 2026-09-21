@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="game-server" content="">
+  <title>Pong Online — Zbiórka Franka Gry</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/games.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../../index.html">
+      <span class="brand__logo">🏓</span>
+      <span>Pong Online <em>Gry</em></span>
+    </a>
+    <nav class="site-nav">
+      <a class="btn btn--ghost" href="../../index.html">← Menu</a>
+    </nav>
+  </header>
+
+  <main class="game-shell">
+    <div class="game-topbar">
+      <h1>Pong Online</h1>
+      <div class="hud" id="hud"></div>
+    </div>
+
+    <div id="lobby" class="lobby"></div>
+
+    <div id="play" class="hidden">
+      <div class="game-stage" id="stage"></div>
+      <div class="status-line" id="status"></div>
+      <div class="pong-legend">
+        <span>Ruch: <strong>myszka / palec</strong> lub strzałki ↑ ↓</span>
+        <span>Do <strong>5</strong> punktów</span>
+      </div>
+    </div>
+
+    <div class="game-toolbar">
+      <a class="btn btn--ghost" href="../../index.html">Menu gier</a>
+    </div>
+  </main>
+
+  <script src="../../js/core/game.js"></script>
+  <script src="../../js/core/storage.js"></script>
+  <script src="../../js/core/registry.js"></script>
+  <script src="../../js/net/config.js"></script>
+  <script src="../../js/net/socket.js"></script>
+  <script src="../../js/net/room.js"></script>
+  <script src="../../js/net/lobby.js"></script>
+  <script src="../../js/games/pong.js"></script>
+  <script>
+    (function () {
+      var game = new ZFG.games.Pong(document.getElementById('stage'), {
+        hud: document.getElementById('hud'),
+        status: document.getElementById('status')
+      });
+
+      ZFG.createLobby(document.getElementById('lobby'), {
+        game: ZFG.getGame('pong'),
+        onReady: function (room) {
+          document.getElementById('lobby').classList.add('hidden');
+          document.getElementById('play').classList.remove('hidden');
+          game.attach(room);
+          game.init();
+          game.start();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

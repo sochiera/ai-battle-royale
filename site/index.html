@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OrlyWro — Witamy!</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card {
+    max-width: 640px;
+    margin: 40px 20px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 48px 40px;
+    text-align: center;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .card img {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid rgba(255,255,255,0.25);
+    margin-bottom: 28px;
+  }
+  h1 { font-size: 2.2rem; margin-bottom: 12px; }
+  h1 span { color: #6fd3ff; }
+  p { color: #cfd8dc; line-height: 1.6; margin-bottom: 24px; }
+  .badge {
+    display: inline-block;
+    background: #6fd3ff;
+    color: #0f2027;
+    font-weight: 700;
+    padding: 10px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform .15s;
+  }
+  .badge:hover { transform: scale(1.05); }
+  .links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 28px; }
+  .links a {
+    color: #6fd3ff;
+    text-decoration: none;
+    border: 1px solid rgba(111,211,255,0.4);
+    padding: 8px 20px;
+    border-radius: 999px;
+    transition: background .15s, color .15s;
+  }
+  .links a:hover { background: #6fd3ff; color: #0f2027; }
+  footer { margin-top: 32px; font-size: .8rem; color: #78909c; }
+  .story { text-align: left; }
+  .story h2 { font-size: 1.3rem; color: #6fd3ff; margin-bottom: 16px; text-align: center; }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .gallery a {
+    display: block;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.18);
+    transition: transform .15s;
+  }
+  .gallery a:hover { transform: scale(1.04); }
+  .gallery img { width: 100%; height: 160px; object-fit: cover; display: block; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img src="zdjecie.jpg" alt="Zdjęcie">
+    <h1>Witaj na <span>orlywro.pro</span></h1>
+    <p>To strona zastępu OrlyWro, hostowana na VPS (173.249.29.245), serwowana przez Nginx.</p>
+    <div class="story">
+      <h2>Zastęp Orłów uczy się AI 🦅</h2>
+      <p>Zastęp OrlyWro wyruszył na bezkresne pola cyfrowej dżungli — uczy się sztucznej inteligencji! Towarzyszy nam agent AI, z którym tworzymy kolejne strony, ogrywamy prompt engineering i eksperymentujemy z generowaniem treści i obrazów. Każdy orzeł ma już swój styl i własne pomysły, które dzięki AI nabrały skrzydeł.</p>
+      <p>Twórczość każdego z nas znajdziesz na jego podstronie — zajrzyj, warto!</p>
+    </div>
+    <div class="gallery">
+      <a href="galeria/zdjecie-1.jpg"><img src="galeria/zdjecie-1.jpg" alt="Orły w akcji — zdjęcie 1"></a>
+      <a href="galeria/zdjecie-2.jpg"><img src="galeria/zdjecie-2.jpg" alt="Orły w akcji — zdjęcie 2"></a>
+      <a href="galeria/zdjecie-3.jpeg"><img src="galeria/zdjecie-3.jpeg" alt="Orły w akcji — zdjęcie 3"></a>
+      <a href="galeria/zdjecie-4.jpeg"><img src="galeria/zdjecie-4.jpeg" alt="Orły w akcji — zdjęcie 4"></a>
+      <a href="galeria/zdjecie-5.jpeg"><img src="galeria/zdjecie-5.jpeg" alt="Orły w akcji — zdjęcie 5"></a>
+      <a href="galeria/zdjecie-6.jpeg"><img src="galeria/zdjecie-6.jpeg" alt="Orły w akcji — zdjęcie 6"></a>
+      <a href="galeria/zdjecie-7.jpeg"><img src="galeria/zdjecie-7.jpeg" alt="Orły w akcji — zdjęcie 7"></a>
+      <a href="galeria/zdjecie-8.jpeg"><img src="galeria/zdjecie-8.jpeg" alt="Orły w akcji — zdjęcie 8"></a>
+    </div>
+    <div class="links">
+      <a href="/franek/">Franek</a>
+      <a href="/mati/">Mati</a>
+      <a href="/ignacy/">Ignacy</a>
+      <a href="/adam/">Adam</a>
+      <a href="/druh/">Druh</a>
+    </div>
+    <a class="badge" href="zdjecie.jpg" download>Pobierz zdjęcie (JPG)</a>
+    <footer>&copy; 2026 orlywro.pro &middot; Nginx + Ubuntu</footer>
+  </div>
+</body>
+</html>

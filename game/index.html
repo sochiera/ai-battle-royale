@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f2027">
+<title>Orły-Wro: Bitwa</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="overlay">
+  <section id="screen-menu" class="screen card">
+    <h1>Orły-Wro: <span>Bitwa</span></h1>
+    <p class="sub">PvP survival &middot; orły, dziki i borsuki &middot; kurcząca się arena &middot; do 8 graczy</p>
+    <label>Twoja ksywka
+      <input id="name" maxlength="16" placeholder="Orzeł" autocomplete="off">
+    </label>
+    <div class="row">
+      <button id="btn-host" class="primary">Stwórz grę</button>
+    </div>
+    <div class="or">albo dołącz kodem</div>
+    <div class="row">
+      <input id="code" class="code-input" maxlength="4" placeholder="ABCD" autocomplete="off" spellcheck="false">
+      <button id="btn-join">Dołącz</button>
+    </div>
+    <p id="menu-error" class="error"></p>
+    <div class="controls">
+      <span><b>WASD / strzałki</b> ruch</span>
+      <span><b>Mysz</b> celowanie</span>
+      <span><b>LPM / Spacja / J</b> atak</span>
+      <span><b>Shift</b> dash</span>
+      <span><b>1 / 2 / Q</b> zmiana broni</span>
+      <span><b>Tab</b> wyniki</span>
+      <span><b>H</b> pomoc</span>
+    </div>
+    <div class="row" style="margin-top:14px">
+      <button id="btn-help" class="tiny">Jak grać?</button>
+    </div>
+    <div class="top10">
+      <h2>Top 10</h2>
+      <ol id="top10-list"><li class="muted">Ładowanie…</li></ol>
+    </div>
+  </section>
+
+  <section id="screen-lobby" class="screen card hidden">
+    <h1>Lobby</h1>
+    <div class="codebox">Kod: <b id="lobby-code">----</b> <button id="btn-copy" class="tiny">Kopiuj</button></div>
+    <ul id="lobby-players" class="players"></ul>
+    <p class="hint" id="lobby-hint">Czekamy na graczy…</p>
+    <div class="row">
+      <button id="btn-ready">Gotowy</button>
+      <button id="btn-start" class="primary hidden">Start</button>
+      <button id="btn-leave">Wyjdź</button>
+    </div>
+  </section>
+
+  <section id="screen-connect" class="screen card hidden">
+    <div class="spinner"></div>
+    <p id="connect-text">Łączenie…</p>
+  </section>
+
+  <section id="screen-end" class="screen card wide hidden">
+    <h1 id="end-title">Koniec meczu</h1>
+    <div class="table-wrap"><table id="end-table"></table></div>
+    <div class="row">
+      <button id="btn-again" class="primary">Zagraj ponownie</button>
+    </div>
+  </section>
+
+  <section id="help-panel" class="screen card wide help hidden">
+    <h1>Jak grać w <span>Orły-Wro: Bitwa</span></h1>
+    <div class="help-grid">
+      <div class="help-col">
+        <h2>Sterowanie</h2>
+        <ul>
+          <li><b>WASD / strzałki</b> — ruch</li>
+          <li><b>Mysz</b> — celowanie</li>
+          <li><b>LPM / Spacja / J</b> — atak</li>
+          <li><b>Shift</b> — dash (szybki unik / taran)</li>
+          <li><b>1 / 2 / Q</b> — zmiana broni (broń biała / palna)</li>
+          <li><b>Tab</b> — tablica wyników</li>
+          <li><b>H</b> — ta pomoc</li>
+        </ul>
+        <h2>Cel gry</h2>
+        <ul>
+          <li>Przetrwaj 5 minut na kurczącej się arenie.</li>
+          <li>Zwycięża ostatni żywy lub gracz z największą liczbą punktów.</li>
+          <li>Punkty: obrażenia, zabójstwa, zwierzęta i czas przeżycia.</li>
+        </ul>
+      </div>
+      <div class="help-col">
+        <h2>Broń</h2>
+        <ul>
+          <li><b>Nóż</b> — masz od startu, szybki, słaby.</li>
+          <li><b>Maczeta</b> — mocniejszy cios na krótki dystans.</li>
+          <li><b>Pistolet</b> — strzał na średni dystans.</li>
+          <li><b>Karabin</b> — duże obrażenia i zasięg, wolny.</li>
+          <li>Nową broń podnosisz, wchodząc na leżący przedmiot (zastępuje obecną).</li>
+          <li>Po śmierci wypada broń palna — można ją przejąć.</li>
+        </ul>
+        <h2>Mapa i taktyka</h2>
+        <ul>
+          <li><b>Mury i drzewa</b> — zasłaniają i blokują strzały.</li>
+          <li><b>Woda</b> — spowalnia ruch.</li>
+          <li><b>Krzaki</b> — ukrywają Cię przed wrogami i zwierzętami. Atak zdradza pozycję.</li>
+          <li><b>Apteczki</b> i skrzynki z bronią są ukryte na mapie — szukaj ich w krzakach.</li>
+          <li>Zabijaj zwierzęta po power-upy: +max HP, szybszy dash, szybszy atak.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <button id="btn-help-close" class="primary">Zamknij (H)</button>
+    </div>
+  </section>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pasjans — Zbiórka Franka Gry</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/games.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../../index.html">
+      <span class="brand__logo" data-pixel-icon="solitaire" data-pixel-size="16"></span>
+      <span>Pasjans <em>Gry</em></span>
+    </a>
+    <nav class="site-nav">
+      <a class="btn btn--ghost" href="../../index.html">← Menu</a>
+    </nav>
+  </header>
+
+  <main class="game-shell">
+    <div class="game-topbar">
+      <h1>Pasjans (Klondyk)</h1>
+      <div class="hud" id="hud"></div>
+    </div>
+
+    <div class="game-stage game-stage--board" id="stage"></div>
+
+    <div class="status-line" id="status">Kliknij kartę, aby ją wybrać, i kliknij miejsce docelowe. Dwuklik odkłada na stos.</div>
+
+    <div class="game-toolbar">
+      <button class="btn" id="btn-new" type="button">Nowa gra</button>
+      <button class="btn" id="btn-undo" type="button">Cofnij</button>
+      <div class="filters" id="draw">
+        <button class="filter-btn is-active" data-draw="3" type="button">Dobieraj 3</button>
+        <button class="filter-btn" data-draw="1" type="button">Dobieraj 1</button>
+      </div>
+      <a class="btn btn--ghost" href="../../index.html">Menu gier</a>
+    </div>
+  </main>
+
+  <script src="../../js/core/game.js"></script>
+  <script src="../../js/core/storage.js"></script>
+  <script src="../../js/core/icons.js"></script>
+  <script src="../../js/core/cards.js"></script>
+  <script src="../../js/games/klondike.js"></script>
+  <script>
+    (function () {
+      var game = new ZFG.games.Klondike(document.getElementById('stage'), {
+        hud: document.getElementById('hud'),
+        status: document.getElementById('status')
+      });
+      game.init();
+      game.start();
+
+      document.getElementById('btn-new').addEventListener('click', function () {
+        game.newGame();
+      });
+      document.getElementById('btn-undo').addEventListener('click', function () {
+        game.undo();
+      });
+
+      var draw = document.getElementById('draw');
+      draw.addEventListener('click', function (event) {
+        var button = event.target.closest('.filter-btn');
+        if (!button) return;
+        Array.prototype.forEach.call(draw.querySelectorAll('.filter-btn'), function (item) {
+          item.classList.toggle('is-active', item === button);
+        });
+        game.setDrawCount(parseInt(button.getAttribute('data-draw'), 10));
+      });
+    })();
+  </script>
+</body>
+</html>

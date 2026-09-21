@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zbiórka Franka — Gry</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/games.css">
+</head>
+<body>
+  <div class="desktop">
+    <div class="window" id="main-window">
+      <div class="title-bar">
+        <span class="brand__logo" data-pixel-icon="computer" data-pixel-size="16"></span>
+        <span class="title-bar__text">Zbiórka Franka — Gry</span>
+        <div class="title-bar__buttons">
+          <button class="title-btn" id="win-min" type="button" title="Minimalizuj">_</button>
+          <button class="title-btn" id="win-max" type="button" title="Maksymalizuj">□</button>
+          <button class="title-btn" id="win-close" type="button" title="Zamknij">✕</button>
+        </div>
+      </div>
+
+      <div class="menu-bar">
+        <span class="menu-item" id="menu-about"><u>P</u>omoc</span>
+      </div>
+
+      <div class="window-body">
+        <div class="toolbar">
+          <span class="toolbar__label">Pokaż:</span>
+          <div class="filters" id="filters">
+            <button class="filter-btn is-active" data-filter="all" type="button">Wszystkie</button>
+            <button class="filter-btn" data-filter="solo" type="button">Solo</button>
+          </div>
+          <span class="toolbar__label" id="toolbar-hint">Kliknij grę, aby uruchomić</span>
+        </div>
+
+        <div class="games-grid" id="games-grid"></div>
+
+        <div class="status-bar">
+          <span class="status-cell" id="status-text">Gotowe</span>
+          <span class="status-cell status-cell--size" id="status-count">Gry: 0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="start-menu hidden" id="start-menu">
+    <div class="start-menu__banner">Zbiórka Franka</div>
+    <div class="start-menu__items" id="start-menu-items"></div>
+  </div>
+
+  <div class="taskbar">
+    <button class="btn start-btn" id="start-btn" type="button">
+      <span class="start-btn__logo"><i></i><i></i><i></i><i></i></span>
+      Start
+    </button>
+    <div class="taskbar__tasks">
+      <button class="btn task-btn" id="task-btn" type="button">
+        <span data-pixel-icon="computer" data-pixel-size="16"></span>
+        Zbiórka Franka — Gry
+      </button>
+    </div>
+    <div class="taskbar__clock" id="clock">00:00</div>
+  </div>
+
+  <script src="js/core/game.js"></script>
+  <script src="js/core/storage.js"></script>
+  <script src="js/core/icons.js"></script>
+  <script src="js/core/registry.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
