@@ -3,6 +3,7 @@ import { Input } from './input.js';
 import { Renderer } from './render.js';
 
 const INTERP_MS = 100;
+const EXTRAP_MS = 250;
 const MAX_RING = 24;
 const NAME_KEY = 'orlywro.name';
 const HELP_KEY = 'orlywro.helpSeen';
@@ -21,6 +22,7 @@ const app = {
   ring: [],
   effects: [],
   clockOffset: null,
+  tickRate: 60,
   snapshotRate: 30,
   localPos: null,
   spectate: null,
@@ -190,7 +192,13 @@ function sampleAt(clientTime) {
   const target = clientTime - app.clockOffset - INTERP_MS;
   if (ring.length === 1 || target <= ring[0].st) return ring[0].snap;
   const last = ring[ring.length - 1];
-  if (target >= last.st) return last.snap;
+  if (target >= last.st) {
+    const prev = ring.length > 1 ? ring[ring.length - 2] : null;
+    const over = target - last.st;
+    if (!prev || over > EXTRAP_MS) return last.snap;
+    const f = 1 + over / ((last.st - prev.st) || 1);
+    return interpolate(prev.snap, last.snap, f);
+  }
   for (let i = ring.length - 1; i > 0; i--) {
     const b = ring[i];
     const a = ring[i - 1];
@@ -254,6 +262,7 @@ function onMessage(msg) {
       app.hurtAt = 0;
       app.arena = msg.arena;
       app.map = msg.map || null;
+      app.tickRate = msg.tickRate || 60;
       app.snapshotRate = msg.snapshotRate || 30;
       app.clockOffset = null;
       app.zoneCfg = msg.zone;
@@ -276,7 +285,7 @@ function onMessage(msg) {
     }
     case 'snap': {
       const decoded = decodeSnap(msg);
-      const st = msg.tick * (1000 / (app.snapshotRate || 30));
+      const st = msg.tick * (1000 / (app.tickRate || 60));
       const nowPerf = performance.now();
       if (app.clockOffset === null) app.clockOffset = nowPerf - st;
       else {
